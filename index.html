@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .traffic-light {
+    width: 50px;
+    height: 150px;
+    background-color: black;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .light {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 10px;
+  }
+
+  .red { background-color: red; }
+  .yellow { background-color: yellow; }
+  .green { background-color: green; }
+</style>
+</head>
+<body>
+
+<div class="traffic-light">
+  <div class="light red" id="redLight"></div>
+  <div class="light yellow" id="yellowLight"></div>
+  <div class="light green" id="greenLight"></div>
+</div>
+
+<script>
+var currentLight = "red";
+
+function changeLight() {
+  var redLight = document.getElementById("redLight");
+  var yellowLight = document.getElementById("yellowLight");
+  var greenLight = document.getElementById("greenLight");
+
+  switch (currentLight) {
+    case "red":
+      redLight.style.backgroundColor = "black";
+      yellowLight.style.backgroundColor = "yellow";
+      currentLight = "yellow";
+      setTimeout(changeLight, 3000); // Switch to yellow after 10 seconds
+      break;
+    case "yellow":
+      yellowLight.style.backgroundColor = "black";
+      greenLight.style.backgroundColor = "green";
+      currentLight = "green";
+      setTimeout(changeLight, 10000); // Switch to green after 3 seconds
+      break;
+    case "green":
+      greenLight.style.backgroundColor = "black";
+      redLight.style.backgroundColor = "red";
+      currentLight = "red";
+      setTimeout(changeLight, 10000); // Switch to red after 10 seconds
+      break;
+    default:
+      // Handle any unexpected cases here
+      break;
+  }
+}
+
+// Start the traffic light cycle
+changeLight();
+</script>
+
+</body>
+</html>
